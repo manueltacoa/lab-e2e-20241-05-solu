@@ -13,12 +13,12 @@ En esta entrega deberás:
 ## Requerimientos 📋
 
 Tener instalado:
-> Runtime de Javascript **Node.js** (v20 o superior)
-> Gestor de paquetes de Node **npm** (v10 o superior)
++ Runtime de Javascript **Node.js** (v20 o superior)
++ Gestor de paquetes de Node **npm** (v10 o superior)
 
 Investigar sobre:
-> LA herramienta de desarrollo **Vite**
-> Framework de CSS **Tailwind**
++ LA herramienta de desarrollo **Vite**
++ Framework de CSS **Tailwind**
 
 ## Getting Started 🚀
 
