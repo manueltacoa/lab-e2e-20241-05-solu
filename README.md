@@ -22,12 +22,22 @@ Investigar sobre:
 
 ## Evaluación 📋
 
+La evaluación se divide en dos partes:
+1. **Diseño (5 pts)**
+    - **Estilos**: Deberás clonar o asemejar el diseño de la web del E2E con ayuda de Tailwind. Tomar como referencia el [Prototipo del E2E](#prototipo-en-figma)
+    - **Usabilidad**: Implementar un diseño intuitivo y fácil de usar para el usuario.
+    - **Responsividad**: (OPCIONAL) Implementar un diseño responsivo para la página web.
+2. **Funcionalidad (15 pts)**
+   - **Login/Register**: Deberás implementar la funcionalidad de `Login` y `Register` para cada rol de usuario. 
+   - **Dashboard**: Deberás implementar la funcionalidad de visualizar el historial de `Rides` de cada usuario.
+   - **Consumo de API**: Deberás consumir la API del E2E para obtener los datos necesarios.
+
 ## Getting Started 🚀
 
-En la carpeta principal verán dos carpetas: `backend` y `frontend`. 
+En la raíz verán dos carpetas: `backend` y `frontend`. 
 
 - En la carpeta de `backend` se encuentra la API de Spring Boot realizada en los laboratorios e2e anteriores. 
-- En la carpeta de `frontend` se encuentra el proyecto de Reac-Vite que consumirá el backend.
+- En la carpeta de `frontend` se encuentra el proyecto de React-Vite que consumirá el backend.
 
 ### Organización de carpetas 📂
 
@@ -75,4 +85,14 @@ Les aparecerá un mensaje similar a este:
   ➜  press h + enter to show help
 ```
 
-Pueden acceder a la página web desde el navegador en la dirección [http://localhost:5173/](http://localhost:5173/)
+Pueden acceder a su frontend desde el navegador en la dirección [http://localhost:5173/](http://localhost:5173/)
+
+## Diseño (5pts) 🖌️
+El diseño es una parte fundamental en el desarrollo de software, ya que es lo primero que ve el usuario al interactuar con la aplicación. No obstante, en el curso de CS2031 no será indispensable tener un diseño perfecto, pero sí funcional.  
+
+Se recomienda clonar el diseño del prototipo del E2E con ayuda de Tailwind. Pero puedes crear tu propio diseño si el diseño web no es lo tuyo.
+
+### Prototipo en Figma
+El prototipo en Figma es una guía visual para que puedan clonar el diseño de la web del E2E. Pueden acceder a él desde este enlace: [**Prototipo web del E2E**](https://www.figma.com/community/file/1374595433604097313/diseno-web-e2e-cs2031-utec)
+
+## Funcionalidad (15pts) 💻

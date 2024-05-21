@@ -47,6 +47,4 @@ public class DriverController {
         return ResponseEntity.ok("Driver car updated");
     }
 
-
-
 }
