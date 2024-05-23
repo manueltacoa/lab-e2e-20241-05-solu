@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const BACKEND_URL = 'http://127.0.0.1:8080'; // Spring Boot
 
+// Consume el endpoint "/auth/login" del backend y hace un post
 export const loginApi = async (body) => {
   try {
     const response = await axios.post(`${BACKEND_URL}/auth/login`, body, {
@@ -23,7 +24,7 @@ export const loginApi = async (body) => {
   }
 };
 
-
+// Consume el endpoint "/passenger/me" del backend y hace un get
 export const getPassengerInfo = async () => {
   try {
     const response = await axios.get(`${BACKEND_URL}/passenger/me`, {

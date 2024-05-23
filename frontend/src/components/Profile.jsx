@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { FaUserCircle } from "react-icons/fa";
 import { getPassengerInfo } from '../services/api'
 
 export const Profile = () => {
@@ -20,12 +21,17 @@ export const Profile = () => {
   return (
     <article className='home-section'>
       <h1 className='title mb-3'>Pasajero</h1>
-      <ul>
-        <li>{passengerInfo.firstName} {passengerInfo.lastName}</li>
-        <li>{passengerInfo.email}</li>
-        <li>{passengerInfo.phoneNumber}</li>
-        <li><b>N° viajes:</b> {passengerInfo.trips}</li>
-      </ul>
+      <section className='flex'>
+        <div className='w-2/5'>  
+          <FaUserCircle className='w-full text-9xl'/>
+        </div>
+        <ul className='w-3/5 ml-6 list-disc'>
+          <li>{passengerInfo.firstName} {passengerInfo.lastName}</li>
+          <li>{passengerInfo.email}</li>
+          <li>{passengerInfo.phoneNumber}</li>
+          <li><b>N° viajes:</b> {passengerInfo.trips}</li>
+        </ul>
+      </section>
     </article>
   )
 }
