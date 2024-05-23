@@ -1,0 +1,38 @@
+name: Run PostgreSQL in GitHub Actions
+
+on: [push, pull_request]
+
+jobs:
+  postgres:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: mypassword
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2
+
+    - name: Wait for PostgreSQL to be healthy
+      run: |
+        until docker ps --filter "health=healthy" | grep postgres; do
+          echo "Waiting for postgres to be healthy...";
+          sleep 5;
+        done
+
+    - name: Run database connection test
+      run: ./test_connection.sh
+      env:
+        PGPASSWORD: mypassword

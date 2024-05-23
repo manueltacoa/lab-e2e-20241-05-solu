@@ -39,7 +39,31 @@ En la raíz verán dos carpetas: `backend` y `frontend`.
 - En la carpeta de `backend` se encuentra la API de Spring Boot realizada en los laboratorios e2e anteriores. 
 - En la carpeta de `frontend` se encuentra el proyecto de React-Vite que consumirá el backend.
 
+### Cambios en Spring Boot ❗
+Para que el frontend pueda consumir la API de Spring Boot, se creó un nuevo archivo de configuración en la carpeta `config/CorsConfig.java`, el cual desactiva la política de CORS para que el frontend pueda consumir la API sin problemas.
+
+Código de `CorsConfig.java`:
+```java
+@Configuration
+public class CorsConfig {
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                // Disable Cors Origin to React frontend
+                registry.addMapping("/**").allowedOrigins("http://127.0.0.1:5173");
+            }
+        };
+    }
+}
+```
+
+### Ejecutar el proyecto de Spring Boot ▶️
+Antes de ejecutar el proyecto de React-Vite, es necesario ejecutar el proyecto de Spring Boot para que la API esté disponible. Pueden abrirlo desde IntelliJ IDEA en la carpeta `backend` y ejecutarlo desde ahí. Asegurarse que su proyecto esté corriendo en el puerto `8080`.
+
 ### Organización de carpetas 📂
+El proyecto de **fronend** está organizado de la siguiente manera:
 
 ``` markdown
 frontend/
@@ -61,10 +85,6 @@ frontend/
 ├── tailwind.config.js    # Archivo de configuración de Tailwind
 └── vite.config.js        # Archivo de configuración de Vite
 ```
-
-### Ejecutar el proyecto de Spring Boot
-Antes de ejecutar el proyecto de React-Vite, es necesario ejecutar el proyecto de Spring Boot para que la API esté disponible. Pueden abrirlo desde IntelliJ IDEA en la carpeta `backend` y ejecutarlo desde ahí. Asegurarse que su proyecto esté corriendo en el puerto `8080`.
-
 
 ### Ejecutar el proyecto de React-Vite 🪽
 
