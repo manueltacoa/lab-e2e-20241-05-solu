@@ -33,7 +33,7 @@ jobs:
         done
 
     - name: Run Spring Boot backend container
-      run: docker run --name my-springboot-app --link my-postgres:db -e SPRING_PROFILES_ACTIVE=dev -e SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres -e SPRING_DATASOURCE_USERNAME=postgres -e SPRING_DATASOURCE_PASSWORD=mypassword -p 8080:8080 jeffreyamc/lab_e2e_20241_05_springboot:v2
+      run: docker run --name my-springboot-app --link postgres:db -e SPRING_PROFILES_ACTIVE=dev -e SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres -e SPRING_DATASOURCE_USERNAME=postgres -e SPRING_DATASOURCE_PASSWORD=mypassword -p 8080:8080 jeffreyamc/lab_e2e_20241_05_springboot:v2
 
     - name: Run test_register.sh
       run: |
