@@ -32,6 +32,9 @@ jobs:
           sleep 5;
         done
 
+    - name: Set execute permission on test script
+      run: chmod +x test_connection.sh
+
     - name: Run database connection test
       run: ./test_connection.sh
       env:
