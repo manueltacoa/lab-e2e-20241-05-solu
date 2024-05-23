@@ -10,7 +10,7 @@ jobs:
       postgres:
         image: postgres:latest
         ports:
-          - 5433:5432
+          - 5432:5432
         options: >-
           --health-cmd="pg_isready -U postgres"
           --health-interval=10s
@@ -34,8 +34,8 @@ jobs:
 
     - name: Run Spring Boot backend container
       run: |
-        docker run -d -p 8080:8080 jeffreyamc/lab_e2e_20241_05_springboot
+        docker run -d -p 8080:8080 jeffreyamc/lab_e2e_20241_05_springboot:v2
 
     - name: Test backend connection to PostgreSQL
       run: |
-        curl -X GET http://localhost:8080/test/connection
+        curl -X GET http://localhost:8080/auth/test/connection
