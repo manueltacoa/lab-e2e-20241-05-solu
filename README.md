@@ -88,6 +88,8 @@ Les aparecerá un mensaje similar a este:
 
 Pueden acceder a su frontend desde el navegador en la dirección [http://localhost:5173/](http://localhost:5173/)
 
+> **Nota:** el puerto puede variar dependiendo de la configuración de Vite.
+
 ## Diseño (5pts) 🖌️
 El diseño es una parte fundamental en el desarrollo de software, ya que es lo primero que ve el usuario al interactuar con la aplicación. No obstante, en el curso de CS2031 no será indispensable tener un diseño perfecto, pero sí funcional.  
 
@@ -95,6 +97,12 @@ Se recomienda clonar el diseño del prototipo del E2E con ayuda de Tailwind. **P
 
 ### Prototipo en Figma
 El prototipo en Figma es una guía visual para que puedan clonar el diseño de la web del E2E. Pueden acceder a él desde este enlace: [**Prototipo web del E2E**](https://www.figma.com/community/file/1374595433604097313/diseno-web-e2e-cs2031-utec)
+
+### Estructura de pages 🌎
+- **/auth/login**: Página de inicio de sesión para los usuarios.
+- **Register**: Página de registro para los usuarios.
+- **Dashboard**: Página principal para visualizar el historial de viajes de cada usuario.
+- **Profile**: Página para visualizar y editar la información del usuario.
 
 ## Funcionalidad (15pts) 💻
 

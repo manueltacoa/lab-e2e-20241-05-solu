@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class AuthorizationUtils {
 
     @Autowired
-    private UserService userService ;
+    private UserService userService;
 
     public boolean isAdminOrResourceOwner(Long id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
