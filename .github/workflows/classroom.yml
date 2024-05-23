@@ -1,16 +1,16 @@
-name: Run PostgreSQL in GitHub Actions
+name: Run PostgreSQL and Spring Boot in GitHub Actions
 
 on: [push, pull_request]
 
 jobs:
-  postgres:
+  postgres_and_springboot:
     runs-on: ubuntu-latest
 
     services:
       postgres:
         image: postgres:latest
         ports:
-          - 5432:5432
+          - 5433:5432
         options: >-
           --health-cmd="pg_isready -U postgres"
           --health-interval=10s
@@ -32,10 +32,10 @@ jobs:
           sleep 5;
         done
 
-    - name: Set execute permission on test script
-      run: chmod +x test_connection.sh
+    - name: Run Spring Boot backend container
+      run: |
+        docker run -d -p 8080:8080 jeffreyamc/lab_e2e_20241_05_springboot
 
-    - name: Run database connection test
-      run: ./test_connection.sh
-      env:
-        PGPASSWORD: mypassword
+    - name: Test backend connection to PostgreSQL
+      run: |
+        curl -X GET http://localhost:8080/test/connection
