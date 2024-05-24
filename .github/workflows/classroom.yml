@@ -55,15 +55,12 @@ jobs:
           sleep 5;
         done
 
+    - name: Verify lockfile exists
+      run: ls -la ./frontend/package-lock.json
+
     - name: Run Cypress tests
-      uses: cypress-io/github-action@v6
-      with:
-        wait-on: http://localhost:3000
-        config-file: ./frontend/cypress.config.js
-        browser: chrome
-        record: false
-        publish-summary: true
-        component: false
+      run: |
+        npn run cy:open --config-file ./frontend/cypress.config.js --browser chrome --record false
+      working-directory: ./frontend
       env:
         CYPRESS_BASE_URL: http://localhost:3000
-        working-directory: ./frontend
