@@ -13,7 +13,7 @@ export const Navbar = () => {
     return (
       <div className="bg-black h-12 text-white px-10 py-2 flex justify-between">
         <div className='text-2xl'>Uber</div>
-        <button onClick={logout}>
+        <button id="logout" onClick={logout}>
           Logout
         </button>
       </div>

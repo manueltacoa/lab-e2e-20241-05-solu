@@ -26,7 +26,7 @@ export const Profile = () => {
           <FaUserCircle className='w-full text-9xl'/>
         </div>
         <ul className='w-3/5 ml-6 list-disc'>
-          <li>{passengerInfo.firstName} {passengerInfo.lastName}</li>
+          <li id="passengerInfo">{passengerInfo.firstName} {passengerInfo.lastName}</li>
           <li>{passengerInfo.email}</li>
           <li>{passengerInfo.phoneNumber}</li>
           <li><b>N° viajes:</b> {passengerInfo.trips}</li>

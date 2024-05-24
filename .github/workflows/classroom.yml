@@ -3,12 +3,12 @@ name: lab_e2e_20241_05 workflow
 on: [push, pull_request]
 
 jobs:
-  build_and_test:
+  autograder:
     runs-on: ubuntu-latest
 
     steps:
     - name: Check out the repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Start PostgreSQL container
       run: docker run --name postgres -e POSTGRES_DB=postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=mypassword -p 5432:5432 -d postgres
@@ -44,6 +44,20 @@ jobs:
       run: npm run build
       working-directory: ./frontend
 
-    # - name: Run unit tests for React project
-    #   run: npm test
-    #   working-directory: ./frontend
+    - name: Start React server
+      run: npm run dev
+      working-directory: ./frontend
+
+    - name: Wait for React server to be ready
+      run: |
+        while ! curl -s http://localhost:3000; do
+          echo "Waiting for React server to be ready...";
+          sleep 5;
+        done
+
+    - name: Run Cypress tests
+      uses: cypress-io/github-action@v6
+      with:
+        wait-on: http://localhost:3000
+        config-file: cypress.config.js
+        browser: chrome

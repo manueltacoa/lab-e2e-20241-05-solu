@@ -67,7 +67,7 @@ export const LoginForm = () => {
             onChange={handleChange}
           />
         </div>
-        <button className='bg-primary text-white font-bold mx-6 py-2 px-4 rounded-full cursor-pointer' type="submit">Iniciar Sesión</button>
+        <button id="loginSubmit" className='bg-primary text-white font-bold mx-6 py-2 px-4 rounded-full cursor-pointer' type="submit">Iniciar Sesión</button>
       </form>
       {error && <div style={{ color: 'red' }}>{error}</div>}
       {successMessage && <div style={{ color: 'blue' }}>{successMessage}</div>}
