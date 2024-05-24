@@ -59,9 +59,13 @@ jobs:
       env:
         CYPRESS_BASE_URL: http://localhost:3000
 
+    - name: Read Cypress results
+      id: read-cypress-results
+      run: cat ./frontend/cypress/results/results.json
+
     - name: Autograding Reporter
       uses: education/autograding-grading-reporter@v1
       with:
         runners: cypress
       env:
-        CYPRESS_RESULTS: ${{ steps.run-cypress-tests.outputs.result }}
+        CYPRESS_RESULTS: ${{ steps.read-cypress-results.outputs.result }}
