@@ -19,6 +19,7 @@ jobs:
     - name: Check Docker containers
       run: docker ps
 
-    - name: Test backend connection to PostgreSQL
+    - name: Run test_connection.sh
       run: |
-        curl -X GET http://localhost:8080/auth/test/connection
+        chmod +x test_connection.sh
+        ./test_connection.sh
