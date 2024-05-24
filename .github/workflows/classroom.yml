@@ -59,5 +59,11 @@ jobs:
       uses: cypress-io/github-action@v6
       with:
         wait-on: http://localhost:3000
-        config-file: cypress.config.js
+        config-file: ./frontend/cypress.config.js
         browser: chrome
+        record: false
+        publish-summary: true
+        component: false
+      env:
+        CYPRESS_BASE_URL: http://localhost:3000
+        working-directory: ./frontend
