@@ -60,10 +60,6 @@ jobs:
         timeout: 10
         max-score: 2
 
-    - name: Read Cypress results
-      id: read-cypress-results
-      run: cat ./frontend/cypress/results/results.json
-
     - name: Autograding Reporter
       uses: education/autograding-grading-reporter@v1
       env:
