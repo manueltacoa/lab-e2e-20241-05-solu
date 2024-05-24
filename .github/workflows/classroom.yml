@@ -56,10 +56,11 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Cypress tests
-        setup-command: npm install
+        setup-command: cd frontend && npm install
         command: npx cypress run --config-file ./frontend/cypress.config.js --browser chrome --record false
         timeout: 10
         max-score: 2
+      
 
     - name: Autograding Reporter
       uses: education/autograding-grading-reporter@v1
