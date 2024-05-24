@@ -99,14 +99,15 @@ npm run dev
 Les aparecerá un mensaje similar a este:
 
 ```bash  
-  VITE v5.2.11  ready in 272 ms
+ VITE v5.2.11  ready in 429 ms
 
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://192.168.0.11:3000/
+  ➜  Network: http://172.31.96.1:3000/
   ➜  press h + enter to show help
 ```
 
-Pueden acceder a su frontend desde el navegador en la dirección [http://localhost:5173/](http://localhost:5173/)
+Pueden acceder a su frontend desde el navegador en la dirección [http://localhost:5173/](http://localhost:3000/)
 
 > **Nota:** el puerto puede variar dependiendo de la configuración de Vite.
 

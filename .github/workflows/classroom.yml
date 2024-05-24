@@ -53,11 +53,12 @@ jobs:
 
     - name: Run Cypress tests
       id: run-cypress-tests
-      run: |
-        npx cypress run --config-file ./cypress.config.js --browser chrome --record false
-      working-directory: ./frontend
-      env:
-        CYPRESS_BASE_URL: http://localhost:3000
+      uses: education/autograding-command-grader@v1
+      with:
+        test-name: Cypress tests
+        command: npx cypress run --config-file ./frontend/cypress.config.js --browser chrome --record false
+        timeout: 10
+        max-score: 2
 
     - name: Read Cypress results
       id: read-cypress-results
@@ -65,7 +66,7 @@ jobs:
 
     - name: Autograding Reporter
       uses: education/autograding-grading-reporter@v1
-      with:
-        runners: cypress
       env:
-        CYPRESS_RESULTS: ${{ steps.read-cypress-results.outputs.result }}
+        CYPRESS_RESULTS: "${{ steps.run-cypress-tests.outputs.result }}"
+      with:
+        runners: run-cypress-tests
