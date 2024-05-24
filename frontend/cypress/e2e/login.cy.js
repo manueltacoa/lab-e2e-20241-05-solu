@@ -17,7 +17,7 @@ describe('Login page', () => {
       Cypress.env('authToken', token)
     })
 
-    cy.get('#passengerInfo').should('have.text', 'Jeff Monja')
+    cy.get('#passengerInfo').should('have.text', 'Jeffrey Monja')
   })
 
   it('Logout', () => {
