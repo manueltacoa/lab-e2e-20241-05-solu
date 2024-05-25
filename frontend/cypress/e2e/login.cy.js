@@ -10,7 +10,7 @@ describe('Login page', () => {
     cy.get('#password').type('123456')
     cy.get('#loginSubmit').click()
 
-    cy.url().should('include', '/home')
+    cy.url().should('include', '/dashboard')
 
     cy.window().then(window => {
       const token = window.localStorage.getItem('token')
@@ -29,11 +29,11 @@ describe('Login page', () => {
 
     cy.window().its('localStorage.token').should('eq', token)
 
-    cy.visit('/home')
+    cy.visit('/dashboard')
 
     cy.get('#logout').click()
 
-    cy.url().should('include', '/login')
+    cy.url().should('include', '/auth/login')
 
     // Verificar que el token se haya eliminado del localStorage
     cy.window().its('localStorage.token').should('be.undefined')

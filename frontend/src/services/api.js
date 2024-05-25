@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const BACKEND_URL = 'http://127.0.0.1:8080'; // Spring Boot
 
-// Consume el endpoint "/auth/login" del backend y hace un post
+// Consume el endpoint "/login" del backend y hace un post
 export const loginApi = async (body) => {
   try {
     const response = await axios.post(`${BACKEND_URL}/auth/login`, body, {
@@ -13,6 +13,27 @@ export const loginApi = async (body) => {
 
     if (response.status === 200) {;
       // Guardar token en localStorage
+      localStorage.setItem('token', response.data.token); 
+      return response.data;
+    } else {
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error('Error:', error.message);
+    throw error;
+  }
+};
+
+// Consume el endpoint "/register" del backend y hace un post
+export const registerApi = async (body) => {
+  try {
+    const response = await axios.post(`${BACKEND_URL}/auth/register`, body, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.status === 200) {
       localStorage.setItem('token', response.data.token); 
       return response.data;
     } else {

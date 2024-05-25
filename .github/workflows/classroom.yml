@@ -51,20 +51,9 @@ jobs:
           sleep 5;
         done
 
-    - name: Run Cypress tests
-      id: run-cypress-tests
-      uses: education/autograding-command-grader@v1
-      with:
-        test-name: Cypress tests
-        setup-command: cd frontend && npm install
-        command: npx cypress run --config-file ./frontend/cypress.config.js --browser chrome --record false
-        timeout: 10
-        max-score: 2
-      
-
-    - name: Autograding Reporter
-      uses: education/autograding-grading-reporter@v1
+    - name: Running Tests E2E
+      run: |
+        npx cypress run --config-file ./cypress.config.js --browser chrome --record false
+      working-directory: ./frontend
       env:
-        CYPRESS_RESULTS: "${{ steps.run-cypress-tests.outputs.result }}"
-      with:
-        runners: run-cypress-tests
+        CYPRESS_BASE_URL: http://localhost:3000

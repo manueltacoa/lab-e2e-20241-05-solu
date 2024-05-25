@@ -8,8 +8,8 @@ export const Login = () => {
   return (
     <main className='px-10'>
       <section className='flex justify-center items-center py-4'>
-        <Button message="Iniciar Sesión" to="/login"/>
-        <Button message="Registrarse" to="/register"/>
+        <Button message="Iniciar Sesión" to="/auth/login"/>
+        <Button message="Registrarse" to="/auth/register"/>
       </section>
 
       <article className='flex justify-between'>

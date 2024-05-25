@@ -32,6 +32,9 @@ La evaluación se divide en dos partes:
    - **Dashboard**: Deberás implementar la funcionalidad de visualizar el historial de `Rides` de cada usuario.
    - **Consumo de API**: Deberás consumir la API del E2E para obtener los datos necesarios.
 
+> ⚠️⚠️ **Importante:** No modificar ningún atributo `id` de los elementos HTML, ya que son necesarios para ejecutar los test del autograder. 
+
+
 ## Getting Started 🚀
 
 En la raíz verán dos carpetas: `backend` y `frontend`. 
@@ -67,6 +70,8 @@ El proyecto de **fronend** está organizado de la siguiente manera:
 
 ``` markdown
 frontend/
+├── cypress/              # Carpeta de Cypress (Testing)
+│ └── e2e/                # Archivos de testing 
 ├── node_modules/         # Dependencias del proyecto
 ├── public/               # Archivos estáticos de la aplicación
 ├── src/                  # Archivos de código fuente de la aplicación 
@@ -80,6 +85,7 @@ frontend/
 │ ├── App.jsx             # Archivo principal 
 │ └── main.jsx            # Archivo de inicialización          
 ├── .gitignore
+├── cypress.config.js     # Archivo de configuración de Cypress 
 ├── index.html            # Archivo HTML principal
 ├── package.json          # Archivo de configuración de dependencias
 ├── tailwind.config.js    # Archivo de configuración de Tailwind
@@ -107,9 +113,22 @@ Les aparecerá un mensaje similar a este:
   ➜  press h + enter to show help
 ```
 
-Pueden acceder a su frontend desde el navegador en la dirección [http://localhost:5173/](http://localhost:3000/)
+Pueden acceder a su frontend desde el navegador en la dirección [http://localhost:3000/](http://localhost:3000/)
 
 > **Nota:** el puerto puede variar dependiendo de la configuración de Vite.
+
+### Ejecutar el test de Cypress 🧪
+
+Para ejecutar los test de Cypress y probar tu avance, escribir el siguiente comando en la terminal:
+
+```bash
+npx cypress open
+```
+
+Luego, te aparecerá la interfaz de Cypress. Seguir los siguientes pasos para probar tu avance:
+
+![Cypress test](./media/cypress_tests.gif)
+
 
 ## Diseño (5pts) 🖌️
 El diseño es una parte fundamental en el desarrollo de software, ya que es lo primero que ve el usuario al interactuar con la aplicación. No obstante, en el curso de CS2031 no será indispensable tener un diseño perfecto, pero sí funcional.  
@@ -119,11 +138,30 @@ Se recomienda clonar el diseño del prototipo del E2E con ayuda de Tailwind. **P
 ### Prototipo en Figma
 El prototipo en Figma es una guía visual para que puedan clonar el diseño de la web del E2E. Pueden acceder a él desde este enlace: [**Prototipo web del E2E**](https://www.figma.com/community/file/1374595433604097313/diseno-web-e2e-cs2031-utec)
 
-### Estructura de pages 🌎
-- **/auth/login**: Página de inicio de sesión para los usuarios.
-- **Register**: Página de registro para los usuarios.
-- **Dashboard**: Página principal para visualizar el historial de viajes de cada usuario.
-- **Profile**: Página para visualizar y editar la información del usuario.
+![Prototipo web del E2E](./media/FigmaE2E.gif)
+
+### Estructura de rutas y enrutamiento del Frontend 🌎
+- `/auth/login`: Página de inicio de sesión para los usuarios.
+  - Al hacer login, deberá redirigir a la página `/dashboard`.
+  - Tendrá que enrutarse a esta página siempre y cuando el usuario no esté autenticado.
+  - También deberá enrutarse a esta página cuando el usuario haga logout.
+  - La ruta principal `/` deberá redirigir a esta página.
+- `/auth/register`: Página de registro para los usuarios.
+   - Si el usuario selecciona el rol de `Passenger`, deberá redirigir a la página `/dashboard`.
+   - Si el usuario selecciona el rol de `Driver`, deberá redirigir a la página `auth/register/vehicle`. 
+- `/auth/register/vehicle`: Página de registro del vehículo para los conductores.
+  - Al hacer login, deberá redirigir a la página `/dashboard`.
+- `/dashboard:` Página principal para visualizar el dashboard del usuario.
+  - Si el usuario es un `Passenger`, deberá mostrar el historial de viajes y su pefil.
+  - Si el usuario es un `Driver`, deberá mostrar el historial de viajes, su perfil y la información del vehículo.
+  - Al hacer logout, deberá redirigir a la página `/auth/login`.
+  - Tendrá que enrutarse a esta página siempre y cuando el usuario esté autenticado.
+  - Al editar el perfil del usuario, deberá redirigir a la página `/profile/edit`.
+  - Al editar el vehículo del conductor, deberá redirigir a la página `/vehicle/edit`.
+- `/profile/edit:` Página para editar la información del usuario.
+  - Al hacer click en editar, deberá redirigir a `/dashboard`.
+- `/vehicle/edit:` Página para editar la información del vehículo del conductor.
+  - Al hacer click en editar, deberá redirigir a `/dashboard`.
 
 ## Funcionalidad (15pts) 💻
 

@@ -7,7 +7,11 @@ import {
 import { Navbar } from './layout/Navbar'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
-import { Home } from './pages/Home'
+import { RegisterVehicle } from './pages/RegisterVehicle'
+import { Dashboard } from './pages/Dashboard'
+import { EditProfile } from './pages/EditProfile'
+import { EditVehicle } from './pages/EditVehicle'
+import { NotFound } from './pages/NotFound'
 
 function App() {
   
@@ -16,11 +20,14 @@ function App() {
       <Router>
         <Navbar/>
         <Routes>
-          <Route path="/" element={<Navigate to="/login"/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/home" element={<Home/>} />
-          <Route path="*" element={<h1>Page not found :C</h1>} />
+          <Route path="/" element={<Navigate to="/auth/login"/>} />
+          <Route path="/auth/login" element={<Login/>} />
+          <Route path="/auth/register" element={<Register/>} />
+          <Route path="/auth/register/vehicle" element={<RegisterVehicle/>} />
+          <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/profile/edit" element={<EditProfile/>} />
+          <Route path="/vehicle/edit" element={<EditVehicle/>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </>

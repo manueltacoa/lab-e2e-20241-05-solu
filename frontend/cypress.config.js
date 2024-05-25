@@ -5,12 +5,4 @@ export default defineConfig({
   e2e: {
     baseUrl: 'http://localhost:3000',
   },
-  // reporter: 'mochawesome',
-  // reporterOptions: {
-  //   reportDir: 'cypress/results',
-  //   reportFilename: 'results',
-  //   overwrite: false,
-  //   html: false,
-  //   json: true,
-  // }
 });
