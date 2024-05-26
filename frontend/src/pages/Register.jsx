@@ -7,6 +7,15 @@ import img6 from '../assets/Img6.png'
 export const Register = () => {
   const[vehicleRegister, setVehicleRegister] = useState(false);
 
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    phone: '',
+    isDriver: false
+  });  
+
   return (
     <main className='px-10'>
       <section className='flex justify-center items-center py-4'>
@@ -21,9 +30,15 @@ export const Register = () => {
           <img src={img6} alt="uber" />
         </section>
         { vehicleRegister ? 
-          <RegisterVehicle /> 
+          <RegisterVehicle 
+            formData={formData}
+          /> 
           : 
-          <RegisterForm setVehicleRegister={setVehicleRegister}/>
+          <RegisterForm 
+            setVehicleRegister={setVehicleRegister} 
+            formData={formData}
+            setFormData={setFormData}
+          />
         }
       </article>
     </main>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { loginApi } from '../services/api';
+import { fetchLogin } from '../services/api';
 import { useNavigate } from 'react-router-dom';
 
 export const LoginForm = () => {
@@ -25,7 +25,7 @@ export const LoginForm = () => {
     e.preventDefault();
 
     try {
-      loginApi(formData);
+      fetchLogin(formData);
       setError(null);
       setSuccessMessage('Inicio de Sesión exitoso');
       

@@ -217,7 +217,6 @@ Se utilizó `React Router` para el enrutamiento de las páginas. A continuación
       <td>
         <ul>
           <li>/dashboard</li>
-          <li>/auth/register/vehicle</li>
         </ul>
       </td>
     </tr>
@@ -290,10 +289,13 @@ Se utilizó `React Router` para el enrutamiento de las páginas. A continuación
       </th>
       <td>
         <ul>
-          <li>Si la ruta no existe, deberá mostrar un componente de Not Found</li>
+          <li>Si la ruta no existe, deberá mostrar un componente de 404 - Not Found</li>
+          <li>También mostrará un botón para retroceder a la página anterior en la que se estaba</li>
         </ul>
       </td>
       <td>
+        <li>/auth/login</li>
+        <li>/dashboard</li>
       </td>
     </tr>
   </tbody>
@@ -316,6 +318,17 @@ export const fetchLogin = async (body) => {
     // Implementar fetch para hacer login
 };
 ```
+
+> **HINT 1:** Utilizar el `localStorage` para almacenar el token con el siguiente código:
+> ```javascript
+> // Guardar token en localStorage
+> localStorage.setItem('token', token);
+> 
+> // Obtener token de localStorage
+> const token = localStorage.getItem('token');
+> ```
+
+> **HINT 2:** Utiliza la función `getRoleBasedOnToken` de `/services/api.js` para obtener el rol del usuario. 
 
 Fetchs solicitados:
 
@@ -340,7 +353,7 @@ Deberás utilizar React Hooks para obtener los datos de todos los formularios de
 
 
 ### Tarea 3 - Register y delete de usuarios ✏️
-Registrar un nuevo `Passenger` y eliminar su cuenta.
+Registrar un nuevo `User` y eliminar su cuenta.
 
 + El formulario de registro deberá aceptar el registro tanto de pasajeros como de conductores. 
   + Si el usuario selecciona que es conductor, deberá mostrarse un nuevo componente con el formulario de registro de vehículo.
@@ -348,7 +361,7 @@ Registrar un nuevo `Passenger` y eliminar su cuenta.
 + En cualquiera de los dos casos, debe retornar el token JWT y almacenarlo en `localStorage` con el fin de enviarlo en los headers de los fetchs.
 + Al eliminar la cuenta, deberá redirigir a la página de login.
 
-### Tarea 4 - Login, Update y Logout de Passenger ✏️
+### Tarea 4 - Flujo de un Passenger ✏️
 Loggear un `Passenger`, mostrar sus datos, actualizar su perfil y hacer logout.
 
 + Al hacer login, deberá redirigir a la página de dashboard.
@@ -356,7 +369,7 @@ Loggear un `Passenger`, mostrar sus datos, actualizar su perfil y hacer logout.
 + Se debe lograr editar el perfil de usuario y redirigir a la página de dashboard.
 + Al hacer logout, se debe eliminar el Token y deberá redirigir a la página de login.
 
-### Tarea 5 - Login, Update y Logout de Driver ✏️
+### Tarea 5 - Flujo de un Driver ✏️
 Loggear un `Driver` existente, mostrar sus datos, actualizar su vehículo y hacer logout.
 
 + Al hacer login, deberá redirigir a la página de dashboard.

@@ -1,4 +1,4 @@
-describe('Login page', () => {
+describe('Login Passenger', () => {
   beforeEach(() => {
     cy.clearLocalStorage()
   })
@@ -17,7 +17,28 @@ describe('Login page', () => {
       Cypress.env('authToken', token)
     })
 
-    cy.get('#passengerInfo').should('have.text', 'Jeffrey Monja')
+    cy.get('#profileInfo').should('have.text', 'Jeffrey Monja')
+  })
+
+  it('Edit Profile', () => {
+    const token = Cypress.env('authToken')
+
+    cy.window().then(window => {
+      window.localStorage.setItem('token', token)
+    })
+
+    cy.visit('/dashboard')
+
+    cy.get('#editProfile').click()
+
+    cy.url().should('include', '/profile/edit')
+
+    cy.get('#firstName').clear().type('Jeffrey')
+    cy.get('#lastName').clear().type('Monja')
+    cy.get('#phoneNumber').clear().type('987654321')
+    cy.get('#updateSubmit').click()
+
+    cy.url().should('include', '/dashboard')
   })
 
   it('Logout', () => {

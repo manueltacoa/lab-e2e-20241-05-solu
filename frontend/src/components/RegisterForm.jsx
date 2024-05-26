@@ -1,17 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { fetchRegister } from '../services/api';
 import { useNavigate } from 'react-router-dom';
-import { registerApi } from '../services/api';
 
-export const RegisterForm = ({setVehicleRegister}) => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    phone: '',
-    isDriver: false
-  });  
-
+export const RegisterForm = ({setVehicleRegister, formData, setFormData}) => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -28,17 +19,17 @@ export const RegisterForm = ({setVehicleRegister}) => {
 
     if (formData.isDriver) {
       setVehicleRegister(true);
+    } else {
+      try {
+        fetchRegister(formData);
+
+        setTimeout(() => {
+          navigate('/dashboard');
+        }, 2000);
+      } catch (error) {
+        console.error(error.message);
+      }
     }
-
-    // try {
-    //   registerApi(formData);
-
-    //   setTimeout(() => {
-    //     navigate('/dashboard');
-    //   }, 2000);
-    // } catch (error) {
-    //   console.error(error.message);
-    // }
   };
 
   return (

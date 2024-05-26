@@ -47,9 +47,11 @@ public class DriverService {
 
         DriverResponseDto response = new DriverResponseDto();
         response.setId(driver.getId());
-        response.setCategory(driver.getCategory());
         response.setFirstName(driver.getFirstName());
         response.setLastName(driver.getLastName());
+        response.setEmail(driver.getEmail());
+        response.setPhoneNumber(driver.getPhoneNumber());
+        response.setCategory(driver.getCategory());
         response.setTrips(driver.getTrips());
         response.setAvgRating(driver.getAvgRating());
 
