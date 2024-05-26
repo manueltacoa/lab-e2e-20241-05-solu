@@ -56,9 +56,10 @@ La evaluación se divide en dos partes:
 </table>
 
 
-> ⚠️⚠️ **Importante:** 
-> No modificar ningún atributo `id` de los elementos HTML, ya que son necesarios para ejecutar los test del autograder.  
-> No es necesario crear más componentes. Si deseas agregar más componentes, ten cuidado en no eliminar los existentes. 
+## Importante ⚠️
+> + No modificar ningún atributo `id` de los elementos HTML, ya que son necesarios para ejecutar los test del autograder.
+> + No modificar las rutas del frontend, ya que también se usan para los test. Si deseas agregar una ruta nueva, asegúrate de que no entre en conflicto con las existentes.
+> + No es necesario crear más componentes. Si deseas agregar más componentes, ten cuidado en no eliminar los existentes. 
 
 
 ## Getting Started 🚀
@@ -81,7 +82,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 // Disable Cors Origin to React frontend
-                registry.addMapping("/**").allowedOrigins("http://127.0.0.1:5173");
+                registry.addMapping("/**").allowedOrigins("http://127.0.0.1:3000");
             }
         };
     }
