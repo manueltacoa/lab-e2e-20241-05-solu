@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { registerApi } from '../services/api';
 
-export const RegisterForm = () => {
+export const RegisterForm = ({setVehicleRegister}) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -10,7 +10,7 @@ export const RegisterForm = () => {
     password: '',
     phone: '',
     isDriver: false
-  });
+  });  
 
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ export const RegisterForm = () => {
     const { name, value, type } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: type === 'radio' ? (value === '2' ? 2 : 1) : value,
+      [name]: type === 'radio' ? (value === 'true') : value,
     }));
   };
 
@@ -26,15 +26,19 @@ export const RegisterForm = () => {
     e.preventDefault();
     console.log(formData);
 
-    try {
-      registerApi(formData);
-
-      setTimeout(() => {
-        navigate('/dashboard');
-      }, 2000);
-    } catch (error) {
-      console.error(error.message);
+    if (formData.isDriver) {
+      setVehicleRegister(true);
     }
+
+    // try {
+    //   registerApi(formData);
+
+    //   setTimeout(() => {
+    //     navigate('/dashboard');
+    //   }, 2000);
+    // } catch (error) {
+    //   console.error(error.message);
+    // }
   };
 
   return (

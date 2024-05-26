@@ -7,7 +7,6 @@ import {
 import { Navbar } from './layout/Navbar'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
-import { RegisterVehicle } from './pages/RegisterVehicle'
 import { Dashboard } from './pages/Dashboard'
 import { EditProfile } from './pages/EditProfile'
 import { EditVehicle } from './pages/EditVehicle'
@@ -23,7 +22,6 @@ function App() {
           <Route path="/" element={<Navigate to="/auth/login"/>} />
           <Route path="/auth/login" element={<Login/>} />
           <Route path="/auth/register" element={<Register/>} />
-          <Route path="/auth/register/vehicle" element={<RegisterVehicle/>} />
           <Route path="/dashboard" element={<Dashboard/>} />
           <Route path="/profile/edit" element={<EditProfile/>} />
           <Route path="/vehicle/edit" element={<EditVehicle/>} />

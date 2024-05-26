@@ -19,20 +19,46 @@ Tener instalado:
 Investigar sobre:
 + La herramienta de desarrollo [**Vite**](https://vitejs.dev)
 + Framework de CSS [**Tailwind**](https://tailwindcss.com/)
++ Funcionamiento de [**React Hooks**](https://es.reactjs.org/docs/hooks-intro.html)
 
 ## Evaluación 📋
 
 La evaluación se divide en dos partes:
-1. **Diseño (5 pts)**
-    - **Estilos**: Deberás clonar o asemejar el diseño de la web del E2E con ayuda de Tailwind. Tomar como referencia el [Prototipo del E2E](#prototipo-en-figma)
-    - **Usabilidad**: Implementar un diseño intuitivo y fácil de usar para el usuario.
-    - **Responsividad**: (OPCIONAL) Implementar un diseño responsivo para la página web.
-2. **Funcionalidad (15 pts)**
-   - **Login/Register**: Deberás implementar la funcionalidad de `Login` y `Register` para cada rol de usuario. 
-   - **Dashboard**: Deberás implementar la funcionalidad de visualizar el historial de `Rides` de cada usuario.
-   - **Consumo de API**: Deberás consumir la API del E2E para obtener los datos necesarios.
 
-> ⚠️⚠️ **Importante:** No modificar ningún atributo `id` de los elementos HTML, ya que son necesarios para ejecutar los test del autograder. 
+<table>
+  <tr>
+    <th>Evaluación</th>
+    <th>Detalles</th>
+  </tr>
+  <tr>
+    <th>Diseño (5 pts)</th>
+    <td>
+      <ul>
+        <li><strong>Estilos</strong>: Deberás clonar o asemejar el diseño de la web del E2E con ayuda de Tailwind. Tomar como referencia el <a href="#prototipo-en-figma">Prototipo del E2E</a>.</li>
+        <li><strong>Usabilidad</strong>: Implementar un diseño intuitivo y fácil de usar para el usuario.</li>
+        <li><strong>Responsividad</strong>: (OPCIONAL) Implementar un diseño responsivo para la página web.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <th>Funcionalidad (15 pts)</th>
+    <td>
+      <ul>
+        <li><strong>Consumo de API</strong>: Deberás consumir la API del E2E para obtener los datos necesarios con ayuda de <code>Axios</code>.</li>
+        <li><strong>Formularios</strong>: Deberás implementar la funcionalidad de obtener los datos de los formularios con <code>React Hooks</code> y enviarlos al backend.</li>
+        <li><strong>Redirecciones</strong>: Deberás implementar las redirecciones de las rutas según el rol del <code>Usuario</code> y su estado de autenticación.</li>
+        <li><strong>Login/Register</strong>: Deberás implementar la funcionalidad de <code>Login</code> y <code>Register</code> para cada rol de usuario.</li>
+        <li><strong>Dashboard</strong>: Deberás implementar la funcionalidad de visualizar el historial de <code>Rides</code> de cada usuario, visualizar el perfil de cada usuario, ya sea <code>Passenger</code> o <code>Driver</code> y en el caso sea conductor, visualizar la información de su <code>Vehicle</code>.</li>
+        <li><strong>Actualizar datos</strong>: Deberás implementar la funcionalidad de actualizar el perfil del <code>Usuario</code> y el <code>Vehículo</code> del conductor.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+
+> ⚠️⚠️ **Importante:** 
+> No modificar ningún atributo `id` de los elementos HTML, ya que son necesarios para ejecutar los test del autograder.  
+> No es necesario crear más componentes. Si deseas agregar más componentes, ten cuidado en no eliminar los existentes. 
 
 
 ## Getting Started 🚀
@@ -141,38 +167,205 @@ El prototipo en Figma es una guía visual para que puedan clonar el diseño de l
 ![Prototipo web del E2E](./media/FigmaE2E.gif)
 
 ### Estructura de rutas y enrutamiento del Frontend 🌎
-- `/auth/login`: Página de inicio de sesión para los usuarios.
-  - Al hacer login, deberá redirigir a la página `/dashboard`.
-  - Tendrá que enrutarse a esta página siempre y cuando el usuario no esté autenticado.
-  - También deberá enrutarse a esta página cuando el usuario haga logout.
-  - La ruta principal `/` deberá redirigir a esta página.
-- `/auth/register`: Página de registro para los usuarios.
-   - Si el usuario selecciona el rol de `Passenger`, deberá redirigir a la página `/dashboard`.
-   - Si el usuario selecciona el rol de `Driver`, deberá redirigir a la página `auth/register/vehicle`. 
-- `/auth/register/vehicle`: Página de registro del vehículo para los conductores.
-  - Al hacer login, deberá redirigir a la página `/dashboard`.
-- `/dashboard:` Página principal para visualizar el dashboard del usuario.
-  - Si el usuario es un `Passenger`, deberá mostrar el historial de viajes y su pefil.
-  - Si el usuario es un `Driver`, deberá mostrar el historial de viajes, su perfil y la información del vehículo.
-  - Al hacer logout, deberá redirigir a la página `/auth/login`.
-  - Tendrá que enrutarse a esta página siempre y cuando el usuario esté autenticado.
-  - Al editar el perfil del usuario, deberá redirigir a la página `/profile/edit`.
-  - Al editar el vehículo del conductor, deberá redirigir a la página `/vehicle/edit`.
-- `/profile/edit:` Página para editar la información del usuario.
-  - Al hacer click en editar, deberá redirigir a `/dashboard`.
-- `/vehicle/edit:` Página para editar la información del vehículo del conductor.
-  - Al hacer click en editar, deberá redirigir a `/dashboard`.
+Se utilizó `React Router` para el enrutamiento de las páginas. A continuación, se muestra la estructura de rutas y redirecciones del frontend:
+
+<table>
+  <thead>
+    <tr>
+      <th>URL</th>
+      <th>Funcionalidades</th>
+      <th>Redirect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>
+        /auth/login
+        <br>
+        <br>
+        Página de inicio de sesión para los usuarios    
+      </th>
+      <td>
+        <ul>
+          <li>Al hacer login, deberá redirigir a la página <code>/dashboard</code>.</li>
+          <li>Tendrá que enrutarse a esta página siempre y cuando el usuario no esté autenticado.</li>
+          <li>También deberá enrutarse a esta página cuando el usuario haga logout.</li>
+          <li>La ruta principal <code>/</code> deberá redirigir a esta página.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>/dashboard</li>
+          <li>/auth/login</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        /auth/register
+        <br>
+        <br>
+        Página de registro para los usuarios
+      </th>
+      <td>
+        <ul>
+          <li>Si el usuario selecciona que <strong>NO</strong> es conductor, deberá redirigir a la página <code>/dashboard</code>.</li>
+          <li>Si el usuario selecciona que <strong>SI</strong> es conductor, deberá mostrar un componente nuevo con el formulario de registro de vehículo</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>/dashboard</li>
+          <li>/auth/register/vehicle</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        /dashboard
+        <br>
+        <br>
+        Página principal para visualizar el dashboard del usuario
+      </th>
+      <td>
+        <ul>
+          <li>Si el usuario es un <em>Passenger</em>, deberá mostrar el historial de viajes y su perfil.</li>
+          <li>Si el usuario es un <em>Driver</em>, deberá mostrar el historial de viajes, su perfil y la información del vehículo.</li>
+          <li>Al hacer logout, deberá redirigir a la página <code>/auth/login</code>.</li>
+          <li>Tendrá que enrutarse a esta página siempre y cuando el usuario esté autenticado.</li>
+          <li>Al editar el perfil del usuario, deberá redirigir a la página <code>/profile/edit</code>.</li>
+          <li>Al editar el vehículo del conductor, deberá redirigir a la página <code>/vehicle/edit</code>.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>/auth/login</li>
+          <li>/profile/edit</li>
+          <li>/vehicle/edit</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        /profile/edit
+        <br>
+        <br>
+        Página para editar la información del usuario
+      </th>
+      <td>
+        <ul>
+          <li>Al hacer click en actualizar, deberá redirigir a <code>/dashboard</code>.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>/dashboard</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        /vehicle/edit
+        <br>
+        <br>
+        Página para editar la información del vehículo del conductor
+      </th>
+      <td>
+        <ul>
+          <li>Al hacer click en actualizar, deberá redirigir a <code>/dashboard</code>.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>/dashboard</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        /*
+        <br>
+        (todos los demás)
+      </th>
+      <td>
+        <ul>
+          <li>Si la ruta no existe, deberá mostrar un componente de Not Found</li>
+        </ul>
+      </td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## Funcionalidad (15pts) 💻
 
-### Tarea 1 ✏️
-Creación de los fetchs hacia la api de SpringBoot con JavaScript y Axios
+### Tarea 1 - Creación de fetchs ✏️
+Creación de los fetchs hacia la API de SpringBoot con JavaScript y Axios
 
-### Tarea 2 ✏️
+Editar el archivo `/frontend/services/api.js` para implementar los fetchs necesarios para consumir la API del E2E. Aquí hay un ejemplo de una función async para el login:
+
+```javascript
+import axios from 'axios';
+const API_URL = 'http://localhost:8080/';
+
+// Implementar las funciones para hacer fetch
+export const fetchLogin = async (body) => {
+    // Implementar fetch para hacer login
+};
+```
+
+Fetchs solicitados:
+
+| **Función**      | **Método HTTP** | **Request Body**           | **Backend URI**  | **Response Body**          |
+|------------------|-----------------|----------------------------|------------------|----------------------------|
+| fetchLogin       | POST            | `LoginReq`                 | /auth/login      |                            |
+| fetchRegister    | POST            | `RegisterReq`              | /auth/register   |                            |
+| getPassenger     | GET             |                            | /passenger/me    | `PassengerSelfResponseDTO` |
+| getDriver        | GET             |                            | /driver/me       | `DriverResponseDto`        |
+| getRidesByUser   | GET             | page, size                 | /ride/user       | `Page<RidesByUserDto>`     |
+| updatePassenger  | PATCH           | `passengerSelfResponseDTO` | /passenger/me    |                            |
+| updateDriverInfo | PATCH           | id, `NewDriverInfoDto`     | /driver/{id}     | String                     |
+| updateDriverCar  | PATCH           | id, `VehicleBasicDto`      | /driver/{id}/car | String                     |
+| deletePassenger  | DELETE          | id                         | /passenger/{id}  |                            |
+| deleteDriver     | DELETE          | id                         | /driver/{id}     |                            |
+
+
+### Tarea 2 - Obtención de datos ✏️
 Obtención de datos desde los formularios con React Hooks
 
-### Tarea 3 ✏️
-Mostrar datos del backend en Componentes de React
+Deberás utilizar React Hooks para obtener los datos de todos los formularios de la página web y enviarlos al backend.
 
-### Tarea 4 ✏️
-Enviar datos desde el frontend hacia el backend
+
+### Tarea 3 - Register y delete de usuarios ✏️
+Registrar un nuevo `Passenger` y eliminar su cuenta.
+
++ El formulario de registro deberá aceptar el registro tanto de pasajeros como de conductores. 
+  + Si el usuario selecciona que es conductor, deberá mostrarse un nuevo componente con el formulario de registro de vehículo.
+  + Si el usuario selecciona que no es conductor, deberá redirigir a la página de dashboard.
++ En cualquiera de los dos casos, debe retornar el token JWT y almacenarlo en `localStorage` con el fin de enviarlo en los headers de los fetchs.
++ Al eliminar la cuenta, deberá redirigir a la página de login.
+
+### Tarea 4 - Login, Update y Logout de Passenger ✏️
+Loggear un `Passenger`, mostrar sus datos, actualizar su perfil y hacer logout.
+
++ Al hacer login, deberá redirigir a la página de dashboard.
++ El dashboard debe mostrar solamente el historial de viajes y el perfil del pasajero de acuerdo al token.
++ Se debe lograr editar el perfil de usuario y redirigir a la página de dashboard.
++ Al hacer logout, se debe eliminar el Token y deberá redirigir a la página de login.
+
+### Tarea 5 - Login, Update y Logout de Driver ✏️
+Loggear un `Driver` existente, mostrar sus datos, actualizar su vehículo y hacer logout.
+
++ Al hacer login, deberá redirigir a la página de dashboard.
++ El dashboard debe mostrar el historial de viajes, el perfil del conductor y la información del vehículo de acuerdo al token.
++ Se debe lograr editar el vehículo del conductor y redirigir a la página de dashboard.
++ Al hacer logout, se debe eliminar el Token y deberá redirigir a la página de login.
+
+### Tarea 6 - Not Found Page ✏️
+Mostrar una página de error 404 cuando la ruta no exista.
+
++ Mostrar un mensaje de error, la ruta actual y un botón para redirigir a la página de login.
+
+
