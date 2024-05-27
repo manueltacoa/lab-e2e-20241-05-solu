@@ -27,6 +27,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -104,6 +105,7 @@ public class RideService {
 
         ride.setDriver(driver);
         ride.setStatus(Status.ACCEPTED);
+        ride.setDepartureDate(LocalDateTime.now());
 
         rideRepository.save(ride);
 

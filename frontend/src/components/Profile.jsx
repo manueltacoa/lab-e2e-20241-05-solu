@@ -42,10 +42,10 @@ export const Profile = ({setUserId}) => {
           <FaUserCircle className='w-full text-9xl'/>
         </div>
         <ul className='w-3/5 ml-6 list-disc'>
-          <li id="profileInfo">{profileInfo.firstName} {profileInfo.lastName}</li>
-          <li>{profileInfo.email}</li>
-          <li>{profileInfo.phoneNumber}</li>
-          <li><b>N° viajes:</b> {profileInfo.trips}</li>
+          <li id="profileNames">{profileInfo.firstName} {profileInfo.lastName}</li>
+          <li id='profileEmail'>{profileInfo.email}</li>
+          <li id='profilePhone'>{profileInfo.phoneNumber}</li>
+          <li id='profileTrips'><b>N° viajes:</b> {profileInfo.trips}</li>
         </ul>
       </section>
     </article>

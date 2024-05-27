@@ -8,7 +8,7 @@ describe('Register and delete Passenger', () => {
 
     cy.get('#firstName').type('John')
     cy.get('#lastName').type('Doe')
-    cy.get('#email').type('john.doe@upc.edu.pe')
+    cy.get('#email').type('john.doe@gmail.edu.pe')
     cy.get('#password').type('XYZ987')
     cy.get('#phone').type('987654321')
     cy.get('#passenger').check()
@@ -53,7 +53,7 @@ describe('Register and delete Driver', () => {
 
     cy.get('#firstName').type('John')
     cy.get('#lastName').type('Doe')
-    cy.get('#email').type('john.doe@upc.edu.pe')
+    cy.get('#email').type('john.doe@gmail.edu.pe')
     cy.get('#password').type('XYZ987')
     cy.get('#phone').type('987654321')
     cy.get('#driver').check()
@@ -62,7 +62,7 @@ describe('Register and delete Driver', () => {
     cy.get('#category').select('XL')
     cy.get('#brand').type('Toyota')
     cy.get('#model').type('Yaris')
-    cy.get('#licensePlate').type('ABC127')
+    cy.get('#licensePlate').type('ABC128')
     cy.get('#fabricationYear').type('2020')
     cy.get('#capacity').type('5')
     cy.get('#registerVehicleSubmit').click()

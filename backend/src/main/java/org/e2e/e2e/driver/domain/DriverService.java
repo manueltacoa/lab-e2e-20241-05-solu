@@ -112,6 +112,7 @@ public class DriverService {
         Long vehicleId = driver.getVehicle().getId();
         Vehicle vehicle = vehicleService.getVehicle(vehicleId);
 
+        vehicle.setBrand(newVehicle.getBrand());
         vehicle.setModel(newVehicle.getModel());
         vehicle.setLicensePlate(newVehicle.getLicensePlate());
         vehicle.setFabricationYear(newVehicle.getFabricationYear());

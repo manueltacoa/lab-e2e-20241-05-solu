@@ -17,8 +17,28 @@ describe('Login Passenger', () => {
       Cypress.env('authToken', token)
     })
 
-    cy.get('#profileInfo').should('have.text', 'Jeffrey Monja')
+    cy.get('#profileNames').should('have.text', 'Jeffrey Monja')
+    cy.get('#profileEmail').should('have.text', 'jmonja@utec.edu.pe')
+    cy.get('#profilePhone').should('have.text', '987654321')
+    cy.get('#profileTrips').should('have.text', 'N° viajes: 0')
   })
+
+  it('Rides History', () => {
+    const token = Cypress.env('authToken')
+
+    cy.window().then(window => {
+      window.localStorage.setItem('token', token)
+    })
+
+    cy.visit('/dashboard')
+
+
+    cy.get('#ridesHistorial').children().should('have.length', 3)
+    cy.get('#0').should('exist')
+    cy.get('#0  > :nth-child(1) > #origin').should('have.text', 'Barranco')
+    cy.get('#0  > :nth-child(3) > #destination').should('have.text', 'Lima')
+    cy.get('#0  > :nth-child(4) > #price').should('have.text', '20.99')
+  })  
 
   it('Edit Profile', () => {
     const token = Cypress.env('authToken')
@@ -33,12 +53,42 @@ describe('Login Passenger', () => {
 
     cy.url().should('include', '/profile/edit')
 
+    cy.get('#firstName').clear().type('Jeff')
+    cy.get('#lastName').clear().type('Castro')
+    cy.get('#phoneNumber').clear().type('999999999')
+    cy.get('#updateSubmit').click()
+
+    cy.url().should('include', '/dashboard')
+
+    cy.wait(2000)
+
+    cy.get('#profileNames').should('have.text', 'Jeff Castro')
+    cy.get('#profilePhone').should('have.text', '999999999')
+  })
+
+  it('Re-edit Profile', () => {
+    const token = Cypress.env('authToken')
+
+    cy.window().then(window => {
+      window.localStorage.setItem('token', token)
+    })
+
+    cy.visit('/dashboard')
+
+    cy.get('#editProfile').click()
+    cy.url().should('include', '/profile/edit')
+
     cy.get('#firstName').clear().type('Jeffrey')
     cy.get('#lastName').clear().type('Monja')
     cy.get('#phoneNumber').clear().type('987654321')
     cy.get('#updateSubmit').click()
 
     cy.url().should('include', '/dashboard')
+
+    cy.wait(2000)
+
+    cy.get('#profileNames').should('have.text', 'Jeffrey Monja')
+    cy.get('#profilePhone').should('have.text', '987654321')
   })
 
   it('Logout', () => {

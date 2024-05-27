@@ -3,7 +3,6 @@
 }
 
 .home-section{
-  width: 47%;
   @apply bg-secondary p-4 rounded-2xl
 
 }

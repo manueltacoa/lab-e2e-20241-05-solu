@@ -146,11 +146,13 @@ Pueden acceder a su frontend desde el navegador en la dirección [http://localho
 
 ### Ejecutar el test de Cypress 🧪
 
-Para ejecutar los test de Cypress y probar tu avance, escribir el siguiente comando en la terminal:
+Para ejecutar los test de Cypress y probar tu avance, escribir el siguiente comando en una nueva terminal:
 
 ```bash
 npx cypress open
 ```
+
+> **Nota:** Asegurarse de tener el servidor de React y de SpringBoot corriendo antes de ejecutar los test de Cypress.
 
 Luego, te aparecerá la interfaz de Cypress. Seguir los siguientes pasos para probar tu avance:
 
@@ -163,7 +165,7 @@ El diseño es una parte fundamental en el desarrollo de software, ya que es lo p
 Se recomienda clonar el diseño del prototipo del E2E con ayuda de Tailwind. **Pero puedes crear tu propio diseño si lo deseas**.
 
 ### Prototipo en Figma
-El prototipo en Figma es una guía visual para que puedan clonar el diseño de la web del E2E. Pueden acceder a él desde este enlace: [**Prototipo web del E2E**](https://www.figma.com/community/file/1374595433604097313/diseno-web-e2e-cs2031-utec)
+El prototipo en Figma es una guía visual para que puedan clonar el diseño de la web del E2E. Pueden acceder a él desde este enlace: [**Prototipo web del E2E**](https://www.figma.com/community/file/1374595433604097313/diseno-web-e2e)
 
 ![Prototipo web del E2E](./media/FigmaE2E.gif)
 
@@ -230,7 +232,7 @@ Se utilizó `React Router` para el enrutamiento de las páginas. A continuación
       <td>
         <ul>
           <li>Si el usuario es un <em>Passenger</em>, deberá mostrar el historial de viajes y su perfil.</li>
-          <li>Si el usuario es un <em>Driver</em>, deberá mostrar el historial de viajes, su perfil y la información del vehículo.</li>
+          <li>Si el usuario es un <em>Driver</em>, deberá mostrar su perfil y la información del vehículo.</li>
           <li>Al hacer logout, deberá redirigir a la página <code>/auth/login</code>.</li>
           <li>Tendrá que enrutarse a esta página siempre y cuando el usuario esté autenticado.</li>
           <li>Al editar el perfil del usuario, deberá redirigir a la página <code>/profile/edit</code>.</li>
@@ -294,8 +296,7 @@ Se utilizó `React Router` para el enrutamiento de las páginas. A continuación
         </ul>
       </td>
       <td>
-        <li>/auth/login</li>
-        <li>/dashboard</li>
+        <li>*return</li>
       </td>
     </tr>
   </tbody>
@@ -349,7 +350,8 @@ Fetchs solicitados:
 ### Tarea 2 - Obtención de datos ✏️
 Obtención de datos desde los formularios con React Hooks
 
-Deberás utilizar React Hooks para obtener los datos de todos los formularios de la página web y enviarlos al backend.
++ Deberás utilizar React Hooks para obtener los datos de todos los formularios de la página web y enviarlos al backend. 
++ Además, se debe crear un apartado al final de cada formulario para mostrar los errores de validación.
 
 
 ### Tarea 3 - Register y delete de usuarios ✏️
@@ -362,7 +364,7 @@ Registrar un nuevo `User` y eliminar su cuenta.
 + Al eliminar la cuenta, deberá redirigir a la página de login.
 
 ### Tarea 4 - Flujo de un Passenger ✏️
-Loggear un `Passenger`, mostrar sus datos, actualizar su perfil y hacer logout.
+Loggear un `Passenger`, mostrar su perfil, mostrar su historial de viajes, actualizar su perfil y hacer logout.
 
 + Al hacer login, deberá redirigir a la página de dashboard.
 + El dashboard debe mostrar solamente el historial de viajes y el perfil del pasajero de acuerdo al token.
@@ -370,10 +372,10 @@ Loggear un `Passenger`, mostrar sus datos, actualizar su perfil y hacer logout.
 + Al hacer logout, se debe eliminar el Token y deberá redirigir a la página de login.
 
 ### Tarea 5 - Flujo de un Driver ✏️
-Loggear un `Driver` existente, mostrar sus datos, actualizar su vehículo y hacer logout.
+Loggear un `Driver` existente, mostrar su perfil, actualizar su vehículo y hacer logout.
 
 + Al hacer login, deberá redirigir a la página de dashboard.
-+ El dashboard debe mostrar el historial de viajes, el perfil del conductor y la información del vehículo de acuerdo al token.
++ El dashboard debe mostrar el perfil del conductor y la información del vehículo de acuerdo al token.
 + Se debe lograr editar el vehículo del conductor y redirigir a la página de dashboard.
 + Al hacer logout, se debe eliminar el Token y deberá redirigir a la página de login.
 

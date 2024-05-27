@@ -28,7 +28,7 @@ export const EditProfile = () => {
   const fetchDeleteUser = async () => {
     if (getRoleBasedOnToken() === 'ROLE_DRIVER') {
       try {
-        await deleteDriver(profileInfo.id)
+        await deleteDriver(userId)
         localStorage.removeItem('token')
         navigate('/auth/login')
       } catch (error) {
@@ -36,7 +36,7 @@ export const EditProfile = () => {
       }
     } else if (getRoleBasedOnToken() === 'ROLE_PASSENGER') {
       try {
-        await deletePassenger(profileInfo.id)
+        await deletePassenger(userId)
         localStorage.removeItem('token')
         navigate('/auth/login')
       } catch (error) {
@@ -69,7 +69,7 @@ export const EditProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+
 
     fetchUpdateUser()
 
