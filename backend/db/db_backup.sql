@@ -16,6 +16,22 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+-- *not* creating schema, since initdb creates it
+
+
+ALTER SCHEMA public OWNER TO postgres;
+
+--
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON SCHEMA public IS '';
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -283,6 +299,8 @@ COPY public.coordinate (id, latitude, longitude) FROM stdin;
 1	1.2	2.2
 2	1.1	2.2
 3	1.1	2.2
+6	1.1	2.2
+7	1.1	2.2
 \.
 
 
@@ -317,7 +335,8 @@ COPY public.review (id, comment, rating, author_id, ride_id, target_id) FROM std
 --
 
 COPY public.ride (id, arrival_date, departure_date, destination_name, origin_name, price, status, destination_coordinates_id, driver_id, origin_coordinates_id, passenger_id) FROM stdin;
-1	\N	\N	Lima	Barranco	20.99	3	2	2	3	1
+2	\N	2024-05-27 01:09:11.184694	Callao	SMP	19.7	3	6	2	7	1
+1	\N	2024-05-27 01:00:00	Lima	Barranco	20.99	3	2	2	3	1
 \.
 
 
@@ -335,8 +354,8 @@ Test place	1	1
 --
 
 COPY public.users (id, avg_rating, created_at, email, first_name, last_name, password, phone_number, role, trips, updated_at) FROM stdin;
-1	0	2024-05-20 23:32:22.874029-05	jmonja@utec.edu.pe	Jeffrey	Monja	$2a$10$WloHutd2jTVy6AKqKwq0se3DuOkCh7b.eCGiZlNZIlQFu/JwxEDPi	999999999	1	0	\N
-2	0	2024-05-21 00:17:56.415755-05	rames@upc.edu.pe	Romina	Ames	$2a$10$MpZ1CKmZyMHTUnMKhzz84e5OTMpxvTVOSPx.c3uHiVFkOcd1tnqbm	999999998	2	0	\N
+2	0	2024-05-21 00:17:56.415755-05	john.doe@utec.edu.pe	John	Doe	$2a$10$MpZ1CKmZyMHTUnMKhzz84e5OTMpxvTVOSPx.c3uHiVFkOcd1tnqbm	999999999	2	0	\N
+1	0	2024-05-20 23:32:22.874029-05	jmonja@utec.edu.pe	Jeffrey	Monja	$2a$10$WloHutd2jTVy6AKqKwq0se3DuOkCh7b.eCGiZlNZIlQFu/JwxEDPi	987654321	1	0	\N
 \.
 
 
@@ -345,7 +364,7 @@ COPY public.users (id, avg_rating, created_at, email, first_name, last_name, pas
 --
 
 COPY public.vehicle (id, brand, capacity, fabrication_year, license_plate, model) FROM stdin;
-1	Audi	5	2020	ABC-123	R8
+1	Toyota	5	2020	ABC-123	Yaris
 \.
 
 
@@ -353,7 +372,7 @@ COPY public.vehicle (id, brand, capacity, fabrication_year, license_plate, model
 -- Name: coordinate_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.coordinate_id_seq', 3, true);
+SELECT pg_catalog.setval('public.coordinate_id_seq', 7, true);
 
 
 --
@@ -367,21 +386,21 @@ SELECT pg_catalog.setval('public.review_id_seq', 1, false);
 -- Name: ride_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.ride_id_seq', 1, true);
+SELECT pg_catalog.setval('public.ride_id_seq', 2, true);
 
 
 --
 -- Name: users_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_seq', 51, true);
+SELECT pg_catalog.setval('public.users_seq', 1, false);
 
 
 --
 -- Name: vehicle_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.vehicle_id_seq', 1, true);
+SELECT pg_catalog.setval('public.vehicle_id_seq', 1, false);
 
 
 --
@@ -582,6 +601,13 @@ ALTER TABLE ONLY public.ride
 
 ALTER TABLE ONLY public.ride
     ADD CONSTRAINT fko1qb0m0a253ppyrahgg6l03vy FOREIGN KEY (origin_coordinates_id) REFERENCES public.coordinate(id);
+
+
+--
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 
 
 --

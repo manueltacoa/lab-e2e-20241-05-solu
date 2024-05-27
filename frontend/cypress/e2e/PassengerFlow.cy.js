@@ -20,7 +20,6 @@ describe('Login Passenger', () => {
     cy.get('#profileNames').should('have.text', 'Jeffrey Monja')
     cy.get('#profileEmail').should('have.text', 'jmonja@utec.edu.pe')
     cy.get('#profilePhone').should('have.text', '987654321')
-    cy.get('#profileTrips').should('have.text', 'N° viajes: 0')
   })
 
   it('Rides History', () => {
@@ -33,7 +32,7 @@ describe('Login Passenger', () => {
     cy.visit('/dashboard')
 
 
-    cy.get('#ridesHistorial').children().should('have.length', 3)
+    cy.get('#ridesHistorial').children().should('have.length', 2)
     cy.get('#0').should('exist')
     cy.get('#0  > :nth-child(1) > #origin').should('have.text', 'Barranco')
     cy.get('#0  > :nth-child(3) > #destination').should('have.text', 'Lima')

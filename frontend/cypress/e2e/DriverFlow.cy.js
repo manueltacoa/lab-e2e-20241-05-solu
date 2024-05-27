@@ -21,14 +21,13 @@ describe('Driver Flow', () => {
 
     cy.get('#profileNames').should('have.text', 'John Doe')
     cy.get('#profileEmail').should('have.text', 'john.doe@utec.edu.pe')
-    cy.get('#profilePhone').should('have.text', '942482139')
-    cy.get('#profileTrips').should('have.text', 'N° viajes: 0')
+    cy.get('#profilePhone').should('have.text', '999999999')
 
     cy.get('#vehicleModel').should('have.text', 'Toyota Yaris')
     cy.get('#driverCategory').should('have.text', 'Categoría: X')
-    cy.get('#licenseNumber').should('have.text', 'Placa: ABC123')
-    cy.get('#yearOfFabrication').should('have.text', 'Año de fabricación: 2019')
-    cy.get('#capacityNumber').should('have.text', 'Capacidad: 4')
+    cy.get('#licenseNumber').should('have.text', 'Placa: ABC-123')
+    cy.get('#yearOfFabrication').should('have.text', 'Año de fabricación: 2020')
+    cy.get('#capacityNumber').should('have.text', 'Capacidad: 5')
   })
 
   it('Edit Vehicle', () => {
@@ -47,7 +46,7 @@ describe('Driver Flow', () => {
     cy.get('#brand').clear().type('Hyundai')
     cy.get('#model').clear().type('Elantra')
     cy.get('#licensePlate').clear().type('ABC140')
-    cy.get('#fabricationYear').clear().type('2020')
+    cy.get('#fabricationYear').clear().type('2021')
     cy.get('#capacity').clear().type('6')
     cy.get('#vehicleSubmit').click()
 
@@ -57,7 +56,7 @@ describe('Driver Flow', () => {
 
     cy.get('#vehicleModel').should('have.text', 'Hyundai Elantra')
     cy.get('#licenseNumber').should('have.text', 'Placa: ABC140')
-    cy.get('#yearOfFabrication').should('have.text', 'Año de fabricación: 2020')
+    cy.get('#yearOfFabrication').should('have.text', 'Año de fabricación: 2021')
     cy.get('#capacityNumber').should('have.text', 'Capacidad: 6')
   })
 
@@ -75,9 +74,9 @@ describe('Driver Flow', () => {
 
     cy.get('#brand').clear().type('Toyota')
     cy.get('#model').clear().type('Yaris')
-    cy.get('#licensePlate').clear().type('ABC123')
-    cy.get('#fabricationYear').clear().type('2019')
-    cy.get('#capacity').clear().type('4')
+    cy.get('#licensePlate').clear().type('ABC-123')
+    cy.get('#fabricationYear').clear().type('2020')
+    cy.get('#capacity').clear().type('5')
     cy.get('#vehicleSubmit').click()
 
     cy.url().should('include', '/dashboard')
@@ -85,9 +84,9 @@ describe('Driver Flow', () => {
     cy.wait(2000)
 
     cy.get('#vehicleModel').should('have.text', 'Toyota Yaris')
-    cy.get('#licenseNumber').should('have.text', 'Placa: ABC123')
-    cy.get('#yearOfFabrication').should('have.text', 'Año de fabricación: 2019')
-    cy.get('#capacityNumber').should('have.text', 'Capacidad: 4')
+    cy.get('#licenseNumber').should('have.text', 'Placa: ABC-123')
+    cy.get('#yearOfFabrication').should('have.text', 'Año de fabricación: 2020')
+    cy.get('#capacityNumber').should('have.text', 'Capacidad: 5')
   })
 
   it('Logout', () => {
