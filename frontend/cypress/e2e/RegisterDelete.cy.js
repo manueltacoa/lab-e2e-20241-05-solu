@@ -89,6 +89,8 @@ describe('Register and delete Driver', () => {
     cy.get('#editProfile').click()
     cy.url().should('include', '/profile/edit')
 
+    cy.wait(2000)
+
     cy.get('#deleteUser').click()
     cy.url().should('include', '/auth/login')
 

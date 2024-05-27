@@ -34,9 +34,9 @@ describe('Login Passenger', () => {
 
     cy.get('#ridesHistorial').children().should('have.length', 2)
     cy.get('#0').should('exist')
-    cy.get('#0  > :nth-child(1) > #origin').should('have.text', 'Barranco')
-    cy.get('#0  > :nth-child(3) > #destination').should('have.text', 'Lima')
-    cy.get('#0  > :nth-child(4) > #price').should('have.text', '20.99')
+    cy.get('#0  > :nth-child(1) > #origin').should('have.text', 'SMP')
+    cy.get('#0  > :nth-child(3) > #destination').should('have.text', 'Callao')
+    cy.get('#0  > :nth-child(4) > #price').should('have.text', '19.7')
   })  
 
   it('Edit Profile', () => {
