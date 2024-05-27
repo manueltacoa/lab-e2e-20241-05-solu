@@ -14,8 +14,8 @@ describe('Register and delete Passenger', () => {
     cy.get('#passenger').check()
     cy.get('#registerSubmit').click()
 
-    cy.url().should('include', '/dashboard')
     cy.wait(2000);
+    cy.url().should('include', '/dashboard')
 
     cy.window().then(window => {
       const token = window.localStorage.getItem('token')
@@ -36,6 +36,7 @@ describe('Register and delete Passenger', () => {
     cy.get('#editProfile').click()
     cy.url().should('include', '/profile/edit')
 
+    cy.wait(2000)
     cy.get('#deleteUser').click()
     cy.url().should('include', '/auth/login')
 
@@ -67,8 +68,8 @@ describe('Register and delete Driver', () => {
     cy.get('#capacity').type('5')
     cy.get('#registerVehicleSubmit').click()
 
-    cy.url().should('include', '/dashboard')
     cy.wait(2000);
+    cy.url().should('include', '/dashboard')
     
     cy.window().then(window => {
       const token = window.localStorage.getItem('token')
@@ -90,8 +91,8 @@ describe('Register and delete Driver', () => {
     cy.url().should('include', '/profile/edit')
 
     cy.wait(2000)
-
     cy.get('#deleteUser').click()
+
     cy.url().should('include', '/auth/login')
 
     cy.window().its('localStorage.token').should('be.undefined')
