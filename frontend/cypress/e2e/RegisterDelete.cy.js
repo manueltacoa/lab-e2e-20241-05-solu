@@ -19,6 +19,7 @@ describe('Register and delete Passenger', () => {
     cy.get('#passenger').check()
     cy.get('#registerSubmit').click()
 
+    
     cy.wait(2000);
     cy.url().should('include', '/dashboard')
 
