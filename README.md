@@ -92,6 +92,9 @@ public class CorsConfig {
 ### Ejecutar el proyecto de Spring Boot ▶️
 Antes de ejecutar el proyecto de React-Vite, es necesario ejecutar el proyecto de Spring Boot para que la API esté disponible. Pueden abrirlo desde IntelliJ IDEA en la carpeta `backend` y ejecutarlo desde ahí. Asegurarse que su proyecto esté corriendo en el puerto `8080`.
 
+### Agregar data al backend 📝
+Puedes agregar datos a la API de Spring Boot para probar tu frontend. En la carpeta postman encontrarás un archivo `E2E.postman_collection.json` con ejemplos de requests. Importa este archivo en Postman y ejecuta los requests para agregar datos a la API.
+
 ### Organización de carpetas 📂
 El proyecto de **fronend** está organizado de la siguiente manera:
 
