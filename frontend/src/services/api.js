@@ -35,7 +35,7 @@ export const fetchLogin = async (body) => {
 // Consume el endpoint "/register" del backend y hace un post
 export const fetchRegister = async (body) => {
   try {
-    const response = await axios.post(`${BACKEND_URL}/register`, body, {
+    const response = await axios.post(`${BACKEND_URL}/auth/register`, body, {
       headers: {
         'Content-Type': 'application/json',
       },
