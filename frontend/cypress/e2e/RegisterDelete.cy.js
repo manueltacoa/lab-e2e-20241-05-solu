@@ -6,10 +6,10 @@ describe('Register and delete Passenger', () => {
   it('Register successfully', () => {
     cy.visit('/auth/register')
 
-    cy.get('#firstName').type('John')
-    cy.get('#lastName').type('Doe')
-    cy.get('#email').type('john.doe@gmail.edu.pe')
-    cy.get('#password').type('XYZ987')
+    cy.get('#firstName').type('Walter')
+    cy.get('#lastName').type('White')
+    cy.get('#email').type('walter.white@gmail.com')
+    cy.get('#password').type('metanfetamina')
     cy.get('#phone').type('987654321')
     cy.get('#passenger').check()
     cy.get('#registerSubmit').click()
@@ -52,20 +52,20 @@ describe('Register and delete Driver', () => {
   it('Register successfully', () => {
     cy.visit('/auth/register')
 
-    cy.get('#firstName').type('John')
-    cy.get('#lastName').type('Doe')
-    cy.get('#email').type('john.doe@gmail.edu.pe')
-    cy.get('#password').type('XYZ987')
+    cy.get('#firstName').type('Walter')
+    cy.get('#lastName').type('Black')
+    cy.get('#email').type('walter.black@gmail.edu.pe')
+    cy.get('#password').type('metanfetamina')
     cy.get('#phone').type('987654321')
     cy.get('#driver').check()
     cy.get('#registerSubmit').click()
 
     cy.get('#category').select('XL')
-    cy.get('#brand').type('Toyota')
-    cy.get('#model').type('Yaris')
-    cy.get('#licensePlate').type('ABC128')
-    cy.get('#fabricationYear').type('2020')
-    cy.get('#capacity').type('5')
+    cy.get('#brand').type('Lamborghini')
+    cy.get('#model').type('Aventador')
+    cy.get('#licensePlate').type('XYZ123')
+    cy.get('#fabricationYear').type('2024')
+    cy.get('#capacity').type('2')
     cy.get('#registerVehicleSubmit').click()
 
     cy.wait(2000);
