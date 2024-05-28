@@ -59,8 +59,8 @@ La evaluación se divide en dos partes:
 ## Importante ⚠️
 > + No modificar ningún atributo `id` de los elementos HTML, ya que son necesarios para ejecutar los test del autograder.
 > + No modificar las rutas del frontend, ya que también se usan para los test. Si deseas agregar una ruta nueva, asegúrate de que no entre en conflicto con las existentes.
-> + No es necesario crear más componentes. Si deseas agregar más componentes, ten cuidado en no eliminar los existentes. 
-
+> + No es necesario crear más componentes. Si deseas agregar más componentes, ten cuidado en no eliminar los existentes.
+> + Subir las capturas de los test funcionando en la tarea del Canvas 
 
 ## Getting Started 🚀
 
@@ -145,6 +145,8 @@ Pueden acceder a su frontend desde el navegador en la dirección [http://localho
 > **Nota:** el puerto puede variar dependiendo de la configuración de Vite.
 
 ### Ejecutar el test de Cypress 🧪
+
+> ⚠️⚠️ **Importante:** Recuerda subir las capturas de los test funcionando en la tarea del Canvas
 
 Para ejecutar los test de Cypress y probar tu avance, escribir el siguiente comando en una nueva terminal:
 
