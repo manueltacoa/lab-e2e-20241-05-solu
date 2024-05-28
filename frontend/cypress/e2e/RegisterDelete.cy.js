@@ -1,6 +1,11 @@
 describe('Register and delete Passenger', () => {
   beforeEach(() => {
     cy.clearLocalStorage()
+
+    cy.on('fail', (error, runnable) => {
+      console.error('Test failed:', error.message);
+      throw error; // Para que Cypress siga manejando el error después de imprimirlo
+    });
   })
 
   it('Register successfully', () => {
@@ -47,6 +52,11 @@ describe('Register and delete Passenger', () => {
 describe('Register and delete Driver', () => {
   beforeEach(() => {
     cy.clearLocalStorage()
+
+    cy.on('fail', (error, runnable) => {
+      console.error('Test failed:', error.message);
+      throw error; // Para que Cypress siga manejando el error después de imprimirlo
+    });
   })
 
   it('Register successfully', () => {

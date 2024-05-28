@@ -70,7 +70,6 @@ export const EditProfile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-
     fetchUpdateUser()
 
     navigate('/dashboard')
