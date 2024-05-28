@@ -32,9 +32,9 @@ jobs:
         ./test_connection.sh
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '20'
 
     - name: Install Node.js dependencies
       run: npm install
@@ -57,3 +57,10 @@ jobs:
       working-directory: ./frontend
       env:
         CYPRESS_BASE_URL: http://localhost:3000
+
+    - name: Upload Cypress screenshots
+      if: failure()
+      uses: actions/upload-artifact@v2
+      with:
+        name: cypress-screenshots
+        path: frontend/cypress/screenshots
